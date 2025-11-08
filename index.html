@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sound Button Hari Guru</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #4f46e5, #06b6d4);
+      font-family: "Poppins", sans-serif;
+      color: white;
+      text-align: center;
+      margin: 0;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      width: 90%;
+      max-width: 500px;
+    }
+    button {
+      background-color: #1e293b;
+      border: none;
+      padding: 15px;
+      border-radius: 12px;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    button:hover {
+      background-color: #334155;
+      transform: scale(1.05);
+    }
+    button:active {
+      transform: scale(0.98);
+    }
+    footer {
+      margin-top: 25px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎵 Sound Button Hari Guru</h1>
+
+  <div class="buttons">
+    <button onclick="playSound('audio1')">Akh</button>
+    <button onclick="playSound('audio2')">Terompet</button>
+    <button onclick="playSound('audio3')">Wow</button>
+    <button onclick="playSound('audio4')">Tegang</button>
+    <button onclick="playSound('audio5')">Menang</button>
+  </div>
+
+  <!-- Audio files -->
+  <audio id="audio1" src="sound1.mp3"></audio>
+  <audio id="audio2" src="sound2.mp3"></audio>
+  <audio id="audio3" src="sound3.mp3"></audio>
+  <audio id="audio4" src="sound4.mp3"></audio>
+  <audio id="audio5" src="sound5.mp3"></audio>
+
+  <footer>© 2025 Hari Guru Soundboard</footer>
+
+  <script>
+    let currentAudio = null;
+
+    function playSound(id) {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+      const newAudio = document.getElementById(id);
+      newAudio.play();
+      currentAudio = newAudio;
+    }
+  </script>
+</body>
+</html>
