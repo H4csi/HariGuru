@@ -46,6 +46,12 @@
     button:active {
       transform: scale(0.98);
     }
+    .stop-btn {
+      background-color: #dc2626;
+    }
+    .stop-btn:hover {
+      background-color: #ef4444;
+    }
     footer {
       margin-top: 25px;
       font-size: 14px;
@@ -62,6 +68,7 @@
     <button onclick="playSound('audio3')">Wow</button>
     <button onclick="playSound('audio4')">Tegang</button>
     <button onclick="playSound('audio5')">Menang</button>
+    <button class="stop-btn" onclick="stopAllSounds()">🔇 Hentikan Semua</button>
   </div>
 
   <!-- Audio files -->
@@ -77,13 +84,19 @@
     let currentAudio = null;
 
     function playSound(id) {
-      if (currentAudio) {
-        currentAudio.pause();
-        currentAudio.currentTime = 0;
-      }
+      stopAllSounds();
       const newAudio = document.getElementById(id);
       newAudio.play();
       currentAudio = newAudio;
+    }
+
+    function stopAllSounds() {
+      const audios = document.querySelectorAll("audio");
+      audios.forEach(a => {
+        a.pause();
+        a.currentTime = 0;
+      });
+      currentAudio = null;
     }
   </script>
 </body>
